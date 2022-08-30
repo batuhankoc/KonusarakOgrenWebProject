@@ -30,6 +30,14 @@ namespace KonusarakOgren.API.Controllers
             var product = await _service.GetByIdAsync(id);
             return Ok(CustomResponseContract.Success(product, HttpStatusCode.OK));
         }
+        [Authorize(Roles = "Customer,SysAdmin")]
+        [HttpGet("{id}")]
+        [Route("GetAllProduct")]
+        public async Task<IActionResult> GetAll()
+        {
+            var product = await _service.GetAllAsync();
+            return Ok(CustomResponseContract.Success(product, HttpStatusCode.OK));
+        }
 
         [Authorize(Roles = "Admin,SysAdmin")]
         [HttpPost]
