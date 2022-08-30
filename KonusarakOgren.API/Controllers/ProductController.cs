@@ -31,7 +31,7 @@ namespace KonusarakOgren.API.Controllers
             return Ok(CustomResponseContract.Success(product, HttpStatusCode.OK));
         }
         [Authorize(Roles = "Customer,SysAdmin")]
-        [HttpGet("{id}")]
+        [HttpGet]
         [Route("GetAllProduct")]
         public async Task<IActionResult> GetAll()
         {
